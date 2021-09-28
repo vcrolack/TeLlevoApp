@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "TeLLevoApp",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
