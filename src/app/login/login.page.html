@@ -41,12 +41,18 @@
         </div>
       </ng-container>
     </div>
+    <div class="container-button">
+      <ion-button 
+      expand="block" 
+      fill="clear" 
+      shape="round"
+      [disabled]="!loginForm.valid"
+      type="submit"
+      >
+        Iniciar sesión
+      </ion-button>
+    </div>
   </form>
-  <div class="container-button">
-    <ion-button (click)="signUp()" expand="block" fill="clear" shape="round">
-      Iniciar sesión
-    </ion-button>
-  </div>
   <div class="container-recuperar-contrasena">
     <p class="ion-text-center">¿Olvidaste tu contraseña? <a [routerLink]="['/recuperar-password']">Pulsa aquí</a></p>
   </div>
