@@ -35,7 +35,9 @@ ion-item-divider {
 }
 
 ion-item {
-  --background: var(--background-TeLlevoApp);
+  --background: #DDE5EB;
+  --highilight-height: 1000px;
+  --border-radius: 5px;
   display: flex;
   flex-direction: column;
 }
@@ -57,7 +59,8 @@ ion-item {
 }
 
 ion-input {
-  --background: #DDE5EB;
+  --margin-start: 100px;
+  --color: var( --background-TeLlevoApp);
   border-radius: 5px;
   width: 100%;
 }

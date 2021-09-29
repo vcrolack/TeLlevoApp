@@ -8,22 +8,46 @@
   <div class="container-titulo">
     <h1>Te Llevo App</h1>
   </div>
-  <div class="container-form">
-    <div class="input-usuario">
-      <label>Nombre de usuario</label>
+  <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
+    <ion-label>Nombre de usuario</ion-label> 
+    <ion-item>
+      <ion-input formControlName="username" ></ion-input>
+    </ion-item>
+    <div class="validation-error">
+      <ng-container *ngFor="let validation of validation_messages.username">
+        <div *ngIf= "
+              loginForm.get('username').hasError(validation.type) &&
+              (loginForm.get('username').dirty ||
+              loginForm.get('username').touched)
+        ">
+        <p>{{validation.message}}</p>
+        </div>
+      </ng-container>
     </div>
-    <ion-input type="text" ></ion-input>
-    <div class="input-usuario contrasena">
-      <label class="">Contraseña</label>
+    <div class="ion-margin-top">
+      <ion-label >Contraseña</ion-label> 
     </div>
-    <ion-input type="text" ></ion-input>
-  </div>
+    <ion-item>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <div class="validation-error">
+      <ng-container *ngFor="let validation of validation_messages.password">
+        <div *ngIf="
+        loginForm.get('password').hasError(validation.type) &&
+        (loginForm.get('password').dirty ||
+        loginForm.get('password').touched)
+          ">
+          <p>{{validation.message}}</p>
+        </div>
+      </ng-container>
+    </div>
+  </form>
   <div class="container-button">
-    <ion-button (click)="onClick()" expand="block" fill="clear" shape="round">
+    <ion-button (click)="signUp()" expand="block" fill="clear" shape="round">
       Iniciar sesión
     </ion-button>
   </div>
   <div class="container-recuperar-contrasena">
-    <p>¿Olvidaste tu contraseña? <a [routerLink]="['/recuperar-password']">Pulsa aquí</a></p>
+    <p class="ion-text-center">¿Olvidaste tu contraseña? <a [routerLink]="['/recuperar-password']">Pulsa aquí</a></p>
   </div>
 </ion-content>
