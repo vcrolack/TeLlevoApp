@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { LoadingController, NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
-import { AuthenticateService } from '../services/authenticate.service';
+import { AuthenticateService } from '../services/authenticate/authenticate.service';
 
 @Component({
   selector: 'app-login',
@@ -34,8 +34,10 @@ export class LoginPage implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthenticateService,
     private navControler: NavController,
-    private storage: Storage
+    private storage: Storage,
+    private loadingController: LoadingController,
   ) {
+    this.storage.create();
     this.loginForm = this.formBuilder.group({
       username: new FormControl("", Validators.compose([
         Validators.required,
@@ -53,6 +55,17 @@ export class LoginPage implements OnInit {
     )
   }
 
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: "Cargando...",
+      duration: 2000
+    });
+
+    await loading.present();
+
+    const {role, data} = await loading.onDidDismiss();
+  }
+
   ngOnInit() {
   }
 
@@ -60,11 +73,9 @@ export class LoginPage implements OnInit {
     this.authService.loginUser(credentials)
     .then(res => {
       this.errorMessage="";
-      this.storage.set('isUserLoggedIn', true)
+      this.storage.set('isUserLoggedIn', true);
       this.navControler.navigateForward("home");
     })
     .catch(err => this.errorMessage = err);
-    
   }
-
 }

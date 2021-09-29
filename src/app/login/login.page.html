@@ -48,6 +48,7 @@
       shape="round"
       [disabled]="!loginForm.valid"
       type="submit"
+      (click)="presentLoading()"
       >
         Iniciar sesión
       </ion-button>
