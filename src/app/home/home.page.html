@@ -2,8 +2,42 @@
 
 </ion-header> -->
 <ion-content [fullscreen]="true">
-  <div class="container">
-    <img src="/assets/img/logo.png" alt="">
-    <h1>HOLA</h1>
+  <div class="container-logo">
+    <img src="/assets/img/logo.svg" alt="">
   </div>
+  <ion-item-divider sticky="true">
+    <ion-label></ion-label>
+  </ion-item-divider>
+  <div class="container-title ">
+    <h1>Bienvenido, &nbsp; </h1>
+    <h1 class="username">Fanno</h1>
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button  expand="block" fill="clear" shape="round" class="ion-wrap">
+          <img src="./assets/icon/clock.svg" width="25px">
+          <p>Horarios</p> 
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" fill="clear" shape="round">
+          <img src="./assets/icon/car.svg" width="25px">
+          Viajes
+        </ion-button>
+      </ion-col>
+      <ion-col size="12">
+        <ion-button (click)="onClick()" expand="block" fill="clear" shape="round">
+          <img class="espacio-icono" src="./assets/icon/settings.svg" width="40px">
+          Configuración
+        </ion-button>
+      </ion-col>
+      <ion-col size="12">
+        <ion-button (click)="onClick()" expand="block" fill="clear" shape="round">
+          <img class="espacio-icono" src="./assets/icon/help.svg" width="40px">
+          Ayuda
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
