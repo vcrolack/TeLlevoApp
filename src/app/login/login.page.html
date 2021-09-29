@@ -1,0 +1,29 @@
+<ion-content>
+  <div class="container-logo">
+      <img src="/assets/img/logo.svg"> 
+  </div>
+  <ion-item-divider sticky="true">
+    <ion-label></ion-label>
+  </ion-item-divider>
+  <div class="container-titulo">
+    <h1>Te Llevo App</h1>
+  </div>
+  <div class="container-form">
+    <div class="input-usuario">
+      <label>Nombre de usuario</label>
+    </div>
+    <ion-input type="text" ></ion-input>
+    <div class="input-usuario contrasena">
+      <label class="">Contraseña</label>
+    </div>
+    <ion-input type="text" ></ion-input>
+  </div>
+  <div class="container-button">
+    <ion-button (click)="onClick()" expand="block" fill="clear" shape="round">
+      Iniciar sesión
+    </ion-button>
+  </div>
+  <div class="container-recuperar-contrasena">
+    <p>¿Olvidaste tu contraseña? <a [routerLink]="['/recuperar-password']">Pulsa aquí</a></p>
+  </div>
+</ion-content>
