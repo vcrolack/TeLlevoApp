@@ -1,8 +1,10 @@
+import { dashCaseToCamelCase } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { LoadingController, NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+
 
 import { AuthenticateService } from '../services/authenticate/authenticate.service';
 
@@ -14,6 +16,8 @@ import { AuthenticateService } from '../services/authenticate/authenticate.servi
 export class LoginPage implements OnInit {
 
   loginForm: FormGroup;
+
+  //las validacions para cuando se introducen datos erroneos
   validation_messages = {
     username: [
       {type: "required", message: "El nombre de usuario es obligatorio."},
@@ -27,6 +31,7 @@ export class LoginPage implements OnInit {
     ]
   };
 
+  //almacena el error de la promesa para loggears si es que lo hay.
   errorMessage: string = "";
 
 
@@ -55,6 +60,7 @@ export class LoginPage implements OnInit {
     )
   }
 
+  //presenta la animación de carga
   async presentLoading() {
     const loading = await this.loadingController.create({
       message: "Cargando...",
@@ -69,13 +75,19 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
+  //se encarga de realizar el loggeo a la aplicacion
   loginUser(credentials) {
     this.authService.loginUser(credentials)
     .then(res => {
       this.errorMessage="";
       this.storage.set('isUserLoggedIn', true);
       this.navControler.navigateForward("home");
+      console.log(res);
+      
     })
     .catch(err => this.errorMessage = err);
+    
   }
+
+  
 }
