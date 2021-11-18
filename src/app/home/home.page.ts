@@ -48,7 +48,7 @@ export class HomePage {
   }
 
   getWeather() {
-    console.log(this.weatherService.getWeather())
+    this.weatherService.getWeather()
   }
 
 }
