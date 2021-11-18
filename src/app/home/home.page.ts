@@ -24,6 +24,7 @@ export class HomePage {
 
   ) {
     this.userDataSession();
+    this.getWeather();
   }
 
   async presentLoading() {

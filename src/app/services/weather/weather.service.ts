@@ -15,10 +15,12 @@ export class WeatherService {
   infoWeather;
   weatherImg;
   dataWeather = {
+    namePlace: '',
     timeInUrZone: 0,
     nameAbbrWeather: '',
     nameWeather: '',
-    urlImage: ''
+    urlImage: '',
+    state: false
   };
 
   constructor(
@@ -61,6 +63,7 @@ export class WeatherService {
     //console.log(infoLocation)
     var nameLocation = infoLocation[0].title;
     var whereOnEarthId = infoLocation[0].woeid;
+    this.dataWeather.namePlace = nameLocation
     /* var dataWeather = {
       timeInUrZone: 0,
       nameAbbrWeather: '',
@@ -71,6 +74,7 @@ export class WeatherService {
     
     return new Promise((accept, reject) => {
       const urlTempApi = `https://www.metaweather.com/api/location/${whereOnEarthId}/`;
+      console.log(urlTempApi)
       
       this.http.get(urlTempApi).subscribe(
         (data) => {
@@ -90,6 +94,7 @@ export class WeatherService {
               const indexOfWeatherNames = arrWeatherNames.indexOf(this.dataWeather.nameWeather);
               const weatherNameEs = arrWeatherNamesEs[indexOfWeatherNames];
               this.dataWeather.nameWeather = weatherNameEs;
+              this.dataWeather.state = true;
               //console.log(dataWeather)
             }
             accept(this.dataWeather)

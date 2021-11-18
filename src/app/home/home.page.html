@@ -15,7 +15,7 @@ holaaa
   <ion-grid>
     <ion-row>
       <ion-col size="6">
-        <ion-button (click)="getWeather()" expand="block" fill="clear" shape="round" class="ion-wrap">
+        <ion-button expand="block" fill="clear" shape="round" class="ion-wrap">
           <img src="./assets/icon/clock.svg" width="25px">
           <p>Horarios</p>
         </ion-button>
@@ -47,14 +47,14 @@ holaaa
     </ion-row>
   </ion-grid>
 </ion-content>
-<<<<<<< HEAD
-<ion-footer>
-  <ion-toolbar>
-    <ion-title>Tiempo</ion-title>
-    
-
+<ion-footer *ngIf="weatherInfo.state">
+  <ion-toolbar class="ion-text-center ion-justify-content-center">
+    <ion-title class="ion-text-center">Tiempo en tu zona</ion-title>
+    <div class="container-figure">
+      <figure class="container-img">
+        <ion-img src="{{weatherInfo.urlImage}}"></ion-img>
+      </figure>
+      <p *ngIf="weatherInfo">{{weatherInfo.namePlace}}<br>{{weatherInfo.nameWeather}}<br>{{weatherInfo.timeInUrZone}}°C</p>
+    </div>
   </ion-toolbar>
 </ion-footer>
-=======
-
->>>>>>> 045c02896d01020416676dafb2d1e0e69cd03be6
