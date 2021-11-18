@@ -13,6 +13,13 @@ export class WeatherService {
   longitude: number;
   infoLocation;
   infoWeather;
+  weatherImg;
+  dataWeather = {
+    timeInUrZone: 0,
+    nameAbbrWeather: '',
+    nameWeather: '',
+    urlImage: ''
+  };
 
   constructor(
     private http: HttpClient,
@@ -51,37 +58,41 @@ export class WeatherService {
 
   async getWeather() {
     var infoLocation = await this.getLocation();
-    console.log(infoLocation)
+    //console.log(infoLocation)
     var nameLocation = infoLocation[0].title;
     var whereOnEarthId = infoLocation[0].woeid;
+    /* var dataWeather = {
+      timeInUrZone: 0,
+      nameAbbrWeather: '',
+      nameWeather: '',
+      urlImage: ''
+    }; */
+    
     
     return new Promise((accept, reject) => {
       const urlTempApi = `https://www.metaweather.com/api/location/${whereOnEarthId}/`;
-      var dataWeather = {
-        timeInUrZone: 0,
-        nameAbbrWeather: '',
-        nameWeather: ''
-      };
+      
       this.http.get(urlTempApi).subscribe(
         (data) => {
           this.infoWeather = data;
           if (this.infoWeather) {
-            console.log(this.infoWeather)
-            dataWeather.timeInUrZone = this.infoWeather.consolidated_weather[1].the_temp.toFixed(1);
-            dataWeather.nameAbbrWeather = this.infoWeather.consolidated_weather[1].weather_state_abbr;
-            dataWeather.nameWeather = this.infoWeather.consolidated_weather[1].weather_state_name;
-            console.log(dataWeather)
+            //console.log(this.infoWeather)
+            this.dataWeather.timeInUrZone = this.infoWeather.consolidated_weather[1].the_temp.toFixed(1);
+            this.dataWeather.nameAbbrWeather = this.infoWeather.consolidated_weather[1].weather_state_abbr;
+            this.dataWeather.nameWeather = this.infoWeather.consolidated_weather[1].weather_state_name;
+            this.dataWeather.urlImage =`https://www.metaweather.com/static/img/weather/${this.dataWeather.nameAbbrWeather}.svg`;
+            //console.log(dataWeather)
             //translate the weather
             const arrWeatherNames = ["Snow", "Sleet", "Hail", "Thunderstorm", "Heavy Rain", "Light Rain", "Showers", "Heavy Cloud", "Light Cloud", "Clear"];
             const arrWeatherNamesEs = ["nieve", "Aguanieve", "Granizo", "Tormenta", "Lluvia pesada", "Lluvia ligera", "Chubascos", "Nubes pesadas", "Nublado","Despejado"];
             
-            if (arrWeatherNames.includes(dataWeather.nameWeather)) {
-              const indexOfWeatherNames = arrWeatherNames.indexOf(dataWeather.nameWeather);
+            if (arrWeatherNames.includes(this.dataWeather.nameWeather)) {
+              const indexOfWeatherNames = arrWeatherNames.indexOf(this.dataWeather.nameWeather);
               const weatherNameEs = arrWeatherNamesEs[indexOfWeatherNames];
-              dataWeather.nameWeather = weatherNameEs;
-              console.log(dataWeather)
+              this.dataWeather.nameWeather = weatherNameEs;
+              //console.log(dataWeather)
             }
-            accept(dataWeather)
+            accept(this.dataWeather)
           } else {
             reject('ERROR DESCONOCIDO')
           }

@@ -14,6 +14,7 @@ import { WeatherService } from '../services/weather/weather.service';
 export class HomePage {
 
   user = {};
+  weatherInfo = {};
 
   constructor(
     private storage: Storage,
@@ -47,8 +48,10 @@ export class HomePage {
     this.authService.logout();
   }
 
-  getWeather() {
-    this.weatherService.getWeather()
+  async getWeather() {
+    console.log(this.weatherService.getWeather());
+    this.weatherInfo = await this.weatherService.getWeather();
+    console.log(this.weatherInfo)
   }
 
 }
