@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import { Storage } from '@ionic/storage';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,18 +12,10 @@ export class AuthenticateService {
   response;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private storage: Storage,
+    private router: Router
   ) { }
-
-/*   loginUser(credential) {
-    return new Promise((accept, reject) => {
-      if(credential.username == "rolack" && credential.password == "12345") {
-        accept("Login correcto");
-      } else {
-        reject("Login incorrecto")
-      }
-    })
-  }  */
 
   loginUser(credentials) {
     return new Promise((accept, reject) => {
@@ -41,29 +35,13 @@ export class AuthenticateService {
       )
     })
   }
-  readRequest(data) {
-    data.json().then(data => {
-      return data
-    })
+
+  logout(): void {
+    this.storage.remove('userdata')
+    this.storage.set('isUserLoggedIn', false)
+    this.router.navigate(['login'])
   }
   
-/*   loginUser(credentials) {
-    let promise = new Promise((resolve, reject) => {
-      let apiURL = `http://localhost:8000/api/users/${credentials.username}/${credentials.password}/`
-      this.http.get(apiURL)
-      .toPromise()
-      .then(
-        res => {
-          resolve(res);
-        },
-        msg => {
-          reject(msg)
-        }
-      )
-    })
-    //return this.http.get(`http://localhost:8000/api/users/${credentials.username}/${credentials.password}/`);
-    return promise
-  } */
 
 }
 
