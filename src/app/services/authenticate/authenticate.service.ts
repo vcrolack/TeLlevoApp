@@ -10,6 +10,7 @@ export class AuthenticateService {
 
   datosGuardados;
   response;
+  errorMessage = '';
 
   constructor(
     private http: HttpClient,
@@ -26,18 +27,19 @@ export class AuthenticateService {
           if (this.datosGuardados.verification_state == 'true'){
             accept(this.datosGuardados)
           } else {
-            reject(console.log('re pollo que sos'))
+            reject(this.errorMessage = 'Credenciales incorrectas.')
           }
         },
         (error) => {
           console.log(error);
+
         }
       )
     })
   }
 
   logout(): void {
-    this.storage.remove('userdata')
+    this.storage.remove('userData');
     this.storage.set('isUserLoggedIn', false)
     this.router.navigate(['login'])
   }

@@ -49,7 +49,7 @@ ion-item {
   align-items: flex-start;
   justify-content: center;
 }
-.input-usuario {
+.input-destino {
   --background: var(--background-TeLLevoApp);
   margin-bottom: 10px;
 }
@@ -70,7 +70,7 @@ ion-input {
   display: flex;
   justify-content: center;
 }
-ion-button {
+.btn-new-route {
   width: 130px;
   height: 35px;
   --background: var(--action-color-primary);
@@ -78,8 +78,29 @@ ion-button {
   --color: var(--background-TeLlevoApp);
   font-family: 'Myriad Pro Regular', sans-serif, Arial, Helvetica, sans-serif;
 }
-
-.container-recuperar-contrasena a {
-  text-decoration: none;
-  color: var(--action-color-primary)
+.btn-cancel {
+  width: 130px;
+  height: 35px;
+  --background: #CDC0C0;
+  --border-radius: 5px;
+  --color: var(--background-TeLlevoApp);
+  font-family: 'Myriad Pro Regular', sans-serif, Arial, Helvetica, sans-serif;
 }
+
+ion-list {
+  background-color: var(--background-TeLlevoApp);
+}
+
+ion-item ion-label {
+  color: white;
+
+}
+ion-item {
+  --background: var(--background-TeLlevoApp);
+}
+ion-input {
+  --color: white  
+}
+.btn-cancel {
+  border-radius: 15px;
+} 

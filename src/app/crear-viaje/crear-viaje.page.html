@@ -1,0 +1,67 @@
+<ion-content>
+  <div class="container-logo">
+      <img src="/assets/img/logo.svg"> 
+  </div>
+  <ion-item-divider sticky="true">
+    <ion-label></ion-label>
+  </ion-item-divider>
+  <div class="container-titulo">
+    <h1>Te Llevo App</h1>
+  </div>
+  <form [formGroup]="routeForm" (ngSubmit)="newRoute(routeForm.value)">
+    <ion-list>
+      <ion-list-header>
+        <ion-label>
+          Seleccionar Sede
+        </ion-label>
+      </ion-list-header>   
+      <ion-item>
+        <ion-label>Sede</ion-label>
+        <ion-select value="" okText="Seleccionar" cancelText="Cancelar" formControlName="campus">
+          <ion-select-option value="SAN JOAQUIN">San Joaquín</ion-select-option>
+          <ion-select-option value="ALAMEDA">Alameda</ion-select-option>
+          <ion-select-option value="ANTONIO VARAS">Antonio Varas</ion-select-option>
+          <ion-select-option value="EDUCACION CONTINUA">Educación Continua</ion-select-option>
+          <ion-select-option value="MAIPU">Maipú</ion-select-option>
+          <ion-select-option value="MELIPILLA">Melipilla</ion-select-option>
+          <ion-select-option value="ALONSO DE OVALLE">Alonso de Ovalle</ion-select-option>
+          <ion-select-option value="PLAZA NORTE">Plaza Norte</ion-select-option>
+          <ion-select-option value="PLAZA OESTE">Plaza Oeste</ion-select-option>
+          <ion-select-option value="PLAZA VESPUCIO">Plaza Vespucio</ion-select-option>
+          <ion-select-option value="PUENTE ALTO">Puente alto</ion-select-option>
+          <ion-select-option value="SAN BERNARDO">San Bernardo</ion-select-option>
+          <ion-select-option value="SAN CARLOS DE APOQUINDO">San Carlos de Apoquindo</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <div class="ion-margin-top">
+      <ion-label class="label-destino">Destino</ion-label> 
+    </div>
+    <ion-item>
+      <ion-input formControlName="destiny"></ion-input>
+    </ion-item>
+    <div class="ion-margin-top">
+      <ion-label class="label-destino">Tarifa (sin puntos)</ion-label> 
+    </div>
+    <ion-item>
+      <ion-input type="number" formControlName="rate"></ion-input>
+    </ion-item>
+    
+    <div class="container-button">
+      <ion-button 
+      expand="block" 
+      fill="clear" 
+      shape="round"
+      type="submit"
+      class="btn-new-route"
+      
+      >
+        Crear viaje
+      </ion-button>
+      <ion-button (click)="cancelRoute()" expand="block" fill="clear" shape="round" class="btn-cancel">
+        Cancelar
+      </ion-button>
+    </div>
+    <p class="ion-text-center" style="color: red" ></p>
+  </form>
+</ion-content>

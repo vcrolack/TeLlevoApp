@@ -1,7 +1,5 @@
-import { dashCaseToCamelCase } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
 import { LoadingController, NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
@@ -77,18 +75,24 @@ export class LoginPage implements OnInit {
 
   //se encarga de realizar el loggeo a la aplicacion
   loginUser(credentials) {
+    this.presentLoading();
     this.authService.loginUser(credentials)
     .then(res => {
       this.errorMessage="";
       this.storage.set('isUserLoggedIn', true);
-      this.navControler.navigateForward("home");
+      console.log(res['users'].isDriver)
+      if (res['users'].isDriver === "true") {
+        this.navControler.navigateForward("home-driver")
+      } else {
+        this.navControler.navigateForward("home");
+      }
       this.storage.set('userData', res);
-      this.presentLoading();
-      console.log(res);
-      
-      
+      console.log(this.errorMessage)
     })
-    .catch(err => this.errorMessage = err);
+    .catch(err => {
+      this.errorMessage = err
+      console.log(err)
+    });
     
   }
 

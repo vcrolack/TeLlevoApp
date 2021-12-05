@@ -20,7 +20,7 @@
               (loginForm.get('username').dirty ||
               loginForm.get('username').touched)
         ">
-        <p>{{validation.message}}</p>
+        <p style="color: red">{{validation.message}}</p>
         </div>
       </ng-container>
     </div>
@@ -37,7 +37,7 @@
         (loginForm.get('password').dirty ||
         loginForm.get('password').touched)
           ">
-          <p>{{validation.message}}</p>
+          <p style="color: red">{{validation.message}}</p>
         </div>
       </ng-container>
     </div>
@@ -53,9 +53,9 @@
         Iniciar sesión
       </ion-button>
     </div>
-    <p class="ion-text-center">{{errorMessage}}</p>
+    <p class="ion-text-center" style="color: red" >{{errorMessage}}</p>
   </form>
   <div class="container-recuperar-contrasena">
-    <p class="ion-text-center">¿Olvidaste tu contraseña? <a [routerLink]="['/recuperar-password']">Pulsa aquí</a></p>
+    <p class="ion-text-center" >¿Olvidaste tu contraseña? <a [routerLink]="['/recuperar-password']">Pulsa aquí</a></p>
   </div>
 </ion-content>

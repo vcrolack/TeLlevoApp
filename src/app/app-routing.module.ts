@@ -21,6 +21,14 @@ const routes: Routes = [
     path: 'recuperar-password',
     loadChildren: () => import('./recuperar-password/recuperar-password.module').then( m => m.RecuperarPasswordPageModule)
   },
+  {
+    path: 'home-driver',
+    loadChildren: () => import('./home-driver/home-driver.module').then( m => m.HomeDriverPageModule)
+  },
+  {
+    path: 'crear-viaje',
+    loadChildren: () => import('./crear-viaje/crear-viaje.module').then( m => m.CrearViajePageModule)
+  },
 ];
 
 @NgModule({

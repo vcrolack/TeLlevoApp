@@ -4,14 +4,12 @@ import { AuthenticateService } from '../services/authenticate/authenticate.servi
 import { LoadingController, NavController } from '@ionic/angular';
 import { WeatherService } from '../services/weather/weather.service';
 
-
-
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-home-driver',
+  templateUrl: './home-driver.page.html',
+  styleUrls: ['./home-driver.page.scss'],
 })
-export class HomePage {
+export class HomeDriverPage {
 
   user = {};
   weatherInfo = {};
@@ -23,6 +21,7 @@ export class HomePage {
     private weatherService: WeatherService,
 
   ) {
+    this.storage.create();
     this.userDataSession();
     this.getWeather();
   }

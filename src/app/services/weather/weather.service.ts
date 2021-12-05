@@ -39,7 +39,6 @@ export class WeatherService {
     saveCoordinates.longitude = this.longitude;
 
     //API consulting
-    const apiURL = `https://www.metaweather.com/api/location/search/?lattlong=${saveCoordinates.latitude},${saveCoordinates.longitude}`;
     return new Promise((accept, reject) => {
       const apiURL = `https://www.metaweather.com/api/location/search/?lattlong=${saveCoordinates.latitude},${saveCoordinates.longitude}`;
       this.http.get(apiURL).subscribe(
@@ -64,28 +63,19 @@ export class WeatherService {
     var nameLocation = infoLocation[0].title;
     var whereOnEarthId = infoLocation[0].woeid;
     this.dataWeather.namePlace = nameLocation
-    /* var dataWeather = {
-      timeInUrZone: 0,
-      nameAbbrWeather: '',
-      nameWeather: '',
-      urlImage: ''
-    }; */
-    
     
     return new Promise((accept, reject) => {
       const urlTempApi = `https://www.metaweather.com/api/location/${whereOnEarthId}/`;
-      console.log(urlTempApi)
       
       this.http.get(urlTempApi).subscribe(
         (data) => {
           this.infoWeather = data;
           if (this.infoWeather) {
-            //console.log(this.infoWeather)
             this.dataWeather.timeInUrZone = this.infoWeather.consolidated_weather[1].the_temp.toFixed(1);
             this.dataWeather.nameAbbrWeather = this.infoWeather.consolidated_weather[1].weather_state_abbr;
             this.dataWeather.nameWeather = this.infoWeather.consolidated_weather[1].weather_state_name;
             this.dataWeather.urlImage =`https://www.metaweather.com/static/img/weather/${this.dataWeather.nameAbbrWeather}.svg`;
-            //console.log(dataWeather)
+
             //translate the weather
             const arrWeatherNames = ["Snow", "Sleet", "Hail", "Thunderstorm", "Heavy Rain", "Light Rain", "Showers", "Heavy Cloud", "Light Cloud", "Clear"];
             const arrWeatherNamesEs = ["nieve", "Aguanieve", "Granizo", "Tormenta", "Lluvia pesada", "Lluvia ligera", "Chubascos", "Nubes pesadas", "Nublado","Despejado"];
@@ -95,7 +85,6 @@ export class WeatherService {
               const weatherNameEs = arrWeatherNamesEs[indexOfWeatherNames];
               this.dataWeather.nameWeather = weatherNameEs;
               this.dataWeather.state = true;
-              //console.log(dataWeather)
             }
             accept(this.dataWeather)
           } else {
