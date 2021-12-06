@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Tu auto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col size="12">
+      <ion-card *ngIf="vehicle">
+        <ion-card-header>
+          <ion-card-subtitle>El auto del alumno es:</ion-card-subtitle>
+          <ion-card-title>MARCA: {{vehicle.brand}}</ion-card-title>
+          <ion-card-title>MODELO: {{vehicle.model}}</ion-card-title>
+          <ion-card-title>AÑO: {{vehicle.year}}</ion-card-title>
+          <ion-card-title>CAPACIDAD: {{vehicle.capacity}}</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button (click)="goBack()" expand="block" fill="clear" shape="round" class="btn-back">
+      Regresar
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
+
+

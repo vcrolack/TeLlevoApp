@@ -12,15 +12,21 @@
   <ion-grid>
     <ion-row>
       <ion-col size="6">
-        <ion-button expand="block" fill="clear" shape="round" class="ion-wrap">
+        <ion-button expand="block" fill="clear" shape="round" class="ion-wrap" (click)="moveToNewRoute()">
           <img src="./assets/icon/clock.svg" width="25px">
           <p>Crear<br> viaje</p>
         </ion-button>
       </ion-col>
       <ion-col size="6">
-        <ion-button expand="block" fill="clear" shape="round">
+        <ion-button (click)="moveToYourCar()" expand="block" fill="clear" shape="round">
           <img src="./assets/icon/car.svg" width="25px">
           Tu carro
+        </ion-button>
+      </ion-col>
+      <ion-col size="12">
+        <ion-button (click)="moveToRoutesCreated()" expand="block" fill="clear" shape="round">
+          <img class="espacio-icono" src="./assets/icon/route.svg" width="40px">
+          Viajes creados
         </ion-button>
       </ion-col>
       <ion-col size="12">
@@ -29,12 +35,7 @@
           Configuración
         </ion-button>
       </ion-col>
-      <ion-col size="12">
-        <ion-button (click)="onClick()" expand="block" fill="clear" shape="round">
-          <img class="espacio-icono" src="./assets/icon/route.svg" width="40px">
-          Viajes creados
-        </ion-button>
-      </ion-col>
+
       <ion-col size="12">
         <ion-button (click)="onClick()" expand="block" fill="clear" shape="round">
           <img class="espacio-icono" src="./assets/icon/help.svg" width="40px">

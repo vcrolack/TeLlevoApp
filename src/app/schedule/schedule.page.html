@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Viajes disponibles</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullFactor="0.8" pullMin="60" pullMax="120">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-row>
+    <ion-col size="12" *ngFor="let route of routes">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>Ruta</ion-card-subtitle>
+          <ion-card-title>Desde:</ion-card-title>
+          <h2 class="ion-text-center">{{route.campus}}</h2>
+          <ion-card-title>Hasta:</ion-card-title>
+          <h2 class="ion-text-center">{{route.destiny}}</h2>
+          <ion-card-title>Tarifa:</ion-card-title>
+          <h2 class="ion-text-center">{{route.rate | currency: clp}}</h2>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-button (click)="onClick()" expand="block" fill="solid" shape="full">
+            Suscribir
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button (click)="goBack()" expand="block" fill="clear" shape="round" class="btn-back">
+      Regresar
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

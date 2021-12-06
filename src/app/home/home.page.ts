@@ -21,6 +21,7 @@ export class HomePage {
     private authService: AuthenticateService,
     private loadingController: LoadingController,
     private weatherService: WeatherService,
+    private navController: NavController
 
   ) {
     this.userDataSession();
@@ -52,6 +53,10 @@ export class HomePage {
 
   async getWeather() {
     this.weatherInfo = await this.weatherService.getWeather();
+  }
+
+  goToSchedule(): void {
+    this.navController.navigateForward("schedule");
   }
 
 }

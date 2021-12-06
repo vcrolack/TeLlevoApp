@@ -19,6 +19,7 @@ export class HomeDriverPage {
     private authService: AuthenticateService,
     private loadingController: LoadingController,
     private weatherService: WeatherService,
+    private navController: NavController
 
   ) {
     this.storage.create();
@@ -51,6 +52,16 @@ export class HomeDriverPage {
 
   async getWeather() {
     this.weatherInfo = await this.weatherService.getWeather();
+  }
+
+  moveToNewRoute(): void {
+    this.navController.navigateForward("crear-viaje");
+  }
+  moveToRoutesCreated(): void {
+    this.navController.navigateForward("routes-created");
+  }
+  moveToYourCar(): void {
+    this.navController.navigateForward("your-car");
   }
 
 }

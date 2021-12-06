@@ -1,0 +1,106 @@
+ion-content {
+  --background: var(--background-TeLlevoApp);
+  font-family: 'Myriad Pro Regular', sans-serif, Arial, Helvetica, sans-serif;
+  --padding-end: 30px;
+  --padding-start: 30px;
+  display: flex;
+  flex-direction: row;
+}
+
+ion-item-divider {
+  --background:var(--background-TeLlevoApp); 
+  --ion-border-color: var(--brand-color-yellow);
+}
+
+.container-titulo {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+.container-titulo h1 {
+  font-size: 45px;
+}
+
+.container-logo {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-content: center;
+  margin-top: 40px;
+}
+.container-logo img {
+  width: 100%;
+  height: 100%;
+}
+
+ion-item {
+  --background: #DDE5EB;
+  --highilight-height: 1000px;
+  --border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-form {
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.input-destino {
+  --background: var(--background-TeLLevoApp);
+  margin-bottom: 10px;
+}
+
+.contrasena {
+  margin-top: 30px;
+}
+
+ion-input {
+  --margin-start: 100px;
+  --color: var( --background-TeLlevoApp);
+  border-radius: 5px;
+  width: 100%;
+}
+
+.container-button {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+.btn-new-route {
+  width: 130px;
+  height: 35px;
+  --background: var(--action-color-primary);
+  --border-radius: 5px;
+  --color: var(--background-TeLlevoApp);
+  font-family: 'Myriad Pro Regular', sans-serif, Arial, Helvetica, sans-serif;
+}
+.btn-cancel {
+  width: 130px;
+  height: 35px;
+  --background: #CDC0C0;
+  --border-radius: 5px;
+  --color: var(--background-TeLlevoApp);
+  font-family: 'Myriad Pro Regular', sans-serif, Arial, Helvetica, sans-serif;
+}
+
+ion-list {
+  background-color: var(--background-TeLlevoApp);
+}
+
+ion-item ion-label {
+  color: white;
+
+}
+ion-item {
+  --background: var(--background-TeLlevoApp);
+}
+ion-input {
+  --color: white  
+}
+.btn-cancel {
+  border-radius: 15px;
+} 
