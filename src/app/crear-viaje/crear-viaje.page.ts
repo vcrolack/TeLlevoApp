@@ -51,6 +51,7 @@ export class CrearViajePage implements OnInit {
     let userData = await this.storage.get('userData');
     let id = (userData['users'].id);
     dataRoute['user_id']= id;
+    dataRoute['passengers_suscribed'] = 0
     console.log(dataRoute)
     this.routeService.newRoute(dataRoute);
     this.NavController.navigateForward("home-driver")

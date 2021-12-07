@@ -4,4 +4,5 @@ export interface Route {
   destiny: string;
   rate: number;
   user_id: number;
+  passengers: number;
 }

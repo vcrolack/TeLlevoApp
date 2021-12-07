@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { CarService } from '../car/car.service';
 
 import { Route } from 'src/app/core/models/route.model';
 
@@ -19,11 +20,13 @@ export class RoutesService {
   }];
   aRoute;
   allRoutes;
+  allCars;
 
   constructor(
     private http: HttpClient,
     private storage: Storage,
-    private router: Router
+    private router: Router,
+    private car: CarService
   ) { }
 
   newRoute(dataRoute) {
@@ -32,7 +35,8 @@ export class RoutesService {
         "campus": dataRoute.campus,
         "destiny": dataRoute.destiny,
         "rate": dataRoute.rate,
-        "user_id": dataRoute.user_id
+        "user_id": dataRoute.user_id,
+        "passengers_suscribed": dataRoute.passengers_suscribed
       }
       const apiURL =`http://127.0.0.1:8000/api/routes/`
       this.http.post(apiURL, dataRoute).subscribe(
@@ -120,14 +124,31 @@ export class RoutesService {
     return new Promise((accept, reject) => {
       const apiURL = `http://127.0.0.1:8000/api/routes/`;
       this.http.get(apiURL).subscribe(
-        (data) => {
-          console.log(data)
+        async(data) => {
+          //console.log(data);
+          this.car.getAllCars()
+          //console.log(this.car.getAllCars())
           this.allRoutes = data['routes'];
+          this.allCars = await this.car.getAllCars();
+          this.allRoutes.push(this.allCars)
+          console.log(this.allCars)
+          console.log(this.allRoutes)
           if (this.allRoutes) {
             accept(this.allRoutes)
           } else {
             reject(console.log("Ha ocurrido un error."))
           }
+        }
+      )
+    })
+  }
+
+  updatePassengers(route_id, changes: Partial<Route>) {
+    return new Promise((accept, reject) => {
+      const apiURL = `http://127.0.0.1:8000/api/routes/${route_id}/`;
+      this.http.put(apiURL, changes).subscribe(
+        (data) => {
+          console.log(data)
         }
       )
     })

@@ -37,7 +37,10 @@ export class EditRoutePage implements OnInit {
 
   updateRoute(dataRoute) {
     console.log(this.route_id)
+    console.log(dataRoute)
+    dataRoute['passengers_suscribed']=0;
     this.routeService.updateRoute(this.route_id, dataRoute);
+    this.navController.navigateForward("routes-created")
 
   }
 

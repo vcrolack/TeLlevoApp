@@ -9,7 +9,7 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <ion-row>
-    <ion-col size="12" *ngFor="let route of routes">
+    <ion-col size="12" *ngFor="let route of routes | slice: 0:-1">
       <ion-card>
         <ion-card-header>
           <ion-card-subtitle>Ruta</ion-card-subtitle>
@@ -19,14 +19,17 @@
           <h2 class="ion-text-center">{{route.destiny}}</h2>
           <ion-card-title>Tarifa:</ion-card-title>
           <h2 class="ion-text-center">{{route.rate | currency: clp}}</h2>
+          <ion-card-title>Asientos ocupados:</ion-card-title>
+          <h2  class="ion-text-center" >{{route.passengers_suscribed}}/4</h2>
         </ion-card-header>
         <ion-card-content>
-          <ion-button (click)="onClick()" expand="block" fill="solid" shape="full">
+          <ion-button (click)="updatePassengers(route)" expand="block" fill="solid" shape="full">
             Suscribir
           </ion-button>
         </ion-card-content>
       </ion-card>
     </ion-col>
+    
   </ion-row>
 </ion-content>
 
@@ -37,3 +40,4 @@
     </ion-button>
   </ion-toolbar>
 </ion-footer>
+<!-- {{route.passengers_suscribed}}/{{route.capacity}} -->
